@@ -14,9 +14,13 @@ set(EXEC_ONLY_SOURCES
 )
 
 set(SOURCES
+  ${SOURCE_DIR}/Fork.cpp
+  ${SOURCE_DIR}/Philosopher.cpp
 )
 
 set(INCLUDES
+  ${INCLUDE_DIR}/Fork.hpp
+  ${INCLUDE_DIR}/Philosopher.hpp
 )
 
 set(INTERFACES
