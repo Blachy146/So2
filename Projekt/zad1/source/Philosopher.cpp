@@ -6,7 +6,10 @@ Philosopher::Philosopher(int id, std::pair<std::shared_ptr<Fork>, std::shared_pt
 {
 }
 
-
+int Philosopher::eat(int numberOfMeals)
+{
+  return 0;
+}
 
 Philosopher::~Philosopher()
 {
