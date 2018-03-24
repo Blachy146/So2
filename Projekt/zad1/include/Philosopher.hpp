@@ -11,6 +11,7 @@ public:
   Philosopher(int id, std::pair<std::shared_ptr<Fork>, std::shared_ptr<Fork>> forks);
 
   int eat(int numberOfMeals);
+  int eatMeal();
 
   ~Philosopher();
 private:
