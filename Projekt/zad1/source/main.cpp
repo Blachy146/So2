@@ -50,7 +50,7 @@ int main()
     philosopherFutures.push_back(std::move(philosopherFuture));
   }
 
-  for(auto& future : philosopherFutures)
+  for (auto& future : philosopherFutures)
   {
     future.get();
   }
