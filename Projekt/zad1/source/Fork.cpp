@@ -39,6 +39,11 @@ int Fork::stopUsing()
   return 0;
 }
 
+int Fork::getId()
+{
+  return id;
+}
+
 Fork::~Fork()
 {
 }

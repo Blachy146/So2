@@ -22,7 +22,7 @@ int Philosopher::eat(int numberOfMeals)
     printMtx->lock();
     move(id, 0);
     clrtoeol();
-    mvprintw(id, 0, "%s %d: %s", "Philosopher", id, "Glodny");
+    mvprintw(id, 0, "%s %d: %s\t|\t[Fork %d, Fork %d]", "Philosopher", id, "Glodny", leftFork->getId(), rightFork->getId());
     refresh();
     printMtx->unlock();
 
@@ -31,7 +31,7 @@ int Philosopher::eat(int numberOfMeals)
     printMtx->lock();
     move(id, 0);
     clrtoeol();
-    mvprintw(id, 0, "%s %d: %s", "Philosopher", id, "Mysli");
+    mvprintw(id, 0, "%s %d: %s\t|\t[Fork %d, Fork %d]", "Philosopher", id, "Mysli", leftFork->getId(), rightFork->getId());
     refresh();
     printMtx->unlock();
 
@@ -52,7 +52,7 @@ int Philosopher::eatMeal()
   printMtx->lock();
   move(id, 0);
   clrtoeol();
-  mvprintw(id, 0, "%s %d: %s", "Philosopher", id, "Je");
+  mvprintw(id, 0, "%s %d: %s\t|\t[Fork %d, Fork %d]", "Philosopher", id, "Je", leftFork->getId(), rightFork->getId());
   refresh();
   printMtx->unlock();
 

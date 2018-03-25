@@ -36,7 +36,7 @@ std::vector<Philosopher> createPhilosophers(std::vector<std::shared_ptr<Fork>>& 
 
 int main()
 {
-  const int numberOfPhilosophers = 5;
+  const int numberOfPhilosophers = 3;
   const int numberOfMeals = 5;
   std::shared_ptr<std::mutex> printMtx = std::make_shared<std::mutex>();
 

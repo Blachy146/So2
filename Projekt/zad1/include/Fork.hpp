@@ -12,9 +12,10 @@ public:
   int startUsing();
   int stopUsing();
 
+  int getId();
+
   ~Fork();
 private:
   const int id;
-
   std::shared_ptr<std::mutex> printMtx;
 };
