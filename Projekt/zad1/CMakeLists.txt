@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 project(so2_zad1 CXX)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -lpthread")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -lpthread -lncurses")
 
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -16,11 +16,13 @@ set(EXEC_ONLY_SOURCES
 set(SOURCES
   ${SOURCE_DIR}/Fork.cpp
   ${SOURCE_DIR}/Philosopher.cpp
+  ${SOURCE_DIR}/RandomGenerator.cpp
 )
 
 set(INCLUDES
   ${INCLUDE_DIR}/Fork.hpp
   ${INCLUDE_DIR}/Philosopher.hpp
+  ${INCLUDE_DIR}/RandomGenerator.hpp
 )
 
 set(INTERFACES
