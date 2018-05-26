@@ -14,12 +14,14 @@ set(EXEC_ONLY_SOURCES
 )
 
 set(SOURCES
+  ${SOURCE_DIR}/Building.cpp
   ${SOURCE_DIR}/Elevator.cpp
   ${SOURCE_DIR}/Person.cpp
   ${SOURCE_DIR}/Queue.cpp
 )
 
 set(INCLUDES
+  ${INCLUDE_DIR}/Building.hpp
   ${INCLUDE_DIR}/Elevator.hpp
   ${INCLUDE_DIR}/Person.hpp
   ${INCLUDE_DIR}/Queue.hpp
@@ -30,7 +32,7 @@ set(INTERFACES
 
 set(TARGET_LIBRARY_NAME ${PROJECT_NAME}-lib)
 
-add_library(${TARGET_LIBRARY_NAME} ${SOURCES} ${INCLUDES} ${INTERFACES})
+add_library(${TARGET_LIBRARY_NAME} ${INCLUDES} ${INTERFACES})
 set_target_properties(${TARGET_LIBRARY_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 target_include_directories(${TARGET_LIBRARY_NAME} PUBLIC ${INCLUDE_DIR} ${INTERFACE_DIR})
 
