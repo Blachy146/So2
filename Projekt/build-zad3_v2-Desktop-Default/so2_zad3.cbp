@@ -142,6 +142,12 @@
 		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Queue.hpp">
 			<Option target="so2_zad3-lib"/>
 		</Unit>
+		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/include/RandomGenerator.hpp">
+			<Option target="so2_zad3-lib"/>
+		</Unit>
+		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/include/State.hpp">
+			<Option target="so2_zad3-lib"/>
+		</Unit>
 		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Building.cpp">
 			<Option target="so2_zad3-lib"/>
 		</Unit>
@@ -152,6 +158,12 @@
 			<Option target="so2_zad3-lib"/>
 		</Unit>
 		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Queue.cpp">
+			<Option target="so2_zad3-lib"/>
+		</Unit>
+		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/RandomGenerator.cpp">
+			<Option target="so2_zad3-lib"/>
+		</Unit>
+		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/State.cpp">
 			<Option target="so2_zad3-lib"/>
 		</Unit>
 		<Unit filename="/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/main.cpp">

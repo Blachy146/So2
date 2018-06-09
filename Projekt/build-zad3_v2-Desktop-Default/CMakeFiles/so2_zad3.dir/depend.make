@@ -5,5 +5,6 @@ CMakeFiles/so2_zad3.dir/source/main.cpp.o: /home/bmalecki/Projects/So2/Projekt/z
 CMakeFiles/so2_zad3.dir/source/main.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Elevator.hpp
 CMakeFiles/so2_zad3.dir/source/main.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Person.hpp
 CMakeFiles/so2_zad3.dir/source/main.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Queue.hpp
+CMakeFiles/so2_zad3.dir/source/main.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/State.hpp
 CMakeFiles/so2_zad3.dir/source/main.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/main.cpp
 

@@ -17,6 +17,8 @@ set(SOURCES
   ${SOURCE_DIR}/Person.cpp
   ${SOURCE_DIR}/Queue.cpp
   ${SOURCE_DIR}/Elevator.cpp
+  ${SOURCE_DIR}/State.cpp
+  ${SOURCE_DIR}/RandomGenerator.cpp
 )
 
 set(INCLUDES
@@ -24,6 +26,8 @@ set(INCLUDES
   ${INCLUDE_DIR}/Person.hpp
   ${INCLUDE_DIR}/Queue.hpp
   ${INCLUDE_DIR}/Elevator.hpp
+  ${INCLUDE_DIR}/State.hpp
+  ${INCLUDE_DIR}/RandomGenerator.hpp
 )
 
 set(TARGET_LIBRARY_NAME ${PROJECT_NAME}-lib)

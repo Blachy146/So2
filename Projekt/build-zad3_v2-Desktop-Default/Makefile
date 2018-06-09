@@ -244,6 +244,60 @@ source/Queue.cpp.s:
 	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.s
 .PHONY : source/Queue.cpp.s
 
+source/RandomGenerator.o: source/RandomGenerator.cpp.o
+
+.PHONY : source/RandomGenerator.o
+
+# target to build an object file
+source/RandomGenerator.cpp.o:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.o
+.PHONY : source/RandomGenerator.cpp.o
+
+source/RandomGenerator.i: source/RandomGenerator.cpp.i
+
+.PHONY : source/RandomGenerator.i
+
+# target to preprocess a source file
+source/RandomGenerator.cpp.i:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.i
+.PHONY : source/RandomGenerator.cpp.i
+
+source/RandomGenerator.s: source/RandomGenerator.cpp.s
+
+.PHONY : source/RandomGenerator.s
+
+# target to generate assembly for a file
+source/RandomGenerator.cpp.s:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.s
+.PHONY : source/RandomGenerator.cpp.s
+
+source/State.o: source/State.cpp.o
+
+.PHONY : source/State.o
+
+# target to build an object file
+source/State.cpp.o:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/State.cpp.o
+.PHONY : source/State.cpp.o
+
+source/State.i: source/State.cpp.i
+
+.PHONY : source/State.i
+
+# target to preprocess a source file
+source/State.cpp.i:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/State.cpp.i
+.PHONY : source/State.cpp.i
+
+source/State.s: source/State.cpp.s
+
+.PHONY : source/State.s
+
+# target to generate assembly for a file
+source/State.cpp.s:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/State.cpp.s
+.PHONY : source/State.cpp.s
+
 source/main.o: source/main.cpp.o
 
 .PHONY : source/main.o
@@ -293,6 +347,12 @@ help:
 	@echo "... source/Queue.o"
 	@echo "... source/Queue.i"
 	@echo "... source/Queue.s"
+	@echo "... source/RandomGenerator.o"
+	@echo "... source/RandomGenerator.i"
+	@echo "... source/RandomGenerator.s"
+	@echo "... source/State.o"
+	@echo "... source/State.i"
+	@echo "... source/State.s"
 	@echo "... source/main.o"
 	@echo "... source/main.i"
 	@echo "... source/main.s"

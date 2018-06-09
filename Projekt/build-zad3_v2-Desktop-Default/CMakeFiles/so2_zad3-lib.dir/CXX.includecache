@@ -11,12 +11,26 @@ memory
 -
 vector
 -
+mutex
+-
+condition_variable
+-
 Elevator.hpp
 -
 Queue.hpp
 -
+State.hpp
+-
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Elevator.hpp
+memory
+-
+mutex
+-
+condition_variable
+-
+State.hpp
+-
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Person.hpp
 
@@ -25,7 +39,25 @@ queue
 -
 memory
 -
+mutex
+-
+condition_variable
+-
 Person.hpp
+-
+State.hpp
+-
+
+/home/bmalecki/Projects/So2/Projekt/zad3_v2/include/RandomGenerator.hpp
+random
+-
+
+/home/bmalecki/Projects/So2/Projekt/zad3_v2/include/State.hpp
+mutex
+-
+condition_variable
+-
+vector
 -
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Building.cpp
@@ -37,9 +69,19 @@ Building.hpp
 -
 Elevator.hpp
 -
+State.hpp
+-
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Elevator.cpp
+memory
+-
+mutex
+-
+condition_variable
+-
 Elevator.hpp
+-
+State.hpp
 -
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Person.cpp
@@ -49,8 +91,26 @@ Person.hpp
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Queue.cpp
 memory
 -
+mutex
+-
+condition_variable
+-
 Queue.hpp
 -
 Person.hpp
+-
+State.hpp
+-
+
+/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/RandomGenerator.cpp
+RandomGenerator.hpp
+-
+
+/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/State.cpp
+mutex
+-
+condition_variable
+-
+State.hpp
 -
 

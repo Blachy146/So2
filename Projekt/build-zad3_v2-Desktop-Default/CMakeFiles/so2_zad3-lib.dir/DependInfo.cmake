@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Elevator.cpp" "/home/bmalecki/Projects/So2/Projekt/build-zad3_v2-Desktop-Default/CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o"
   "/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Person.cpp" "/home/bmalecki/Projects/So2/Projekt/build-zad3_v2-Desktop-Default/CMakeFiles/so2_zad3-lib.dir/source/Person.cpp.o"
   "/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Queue.cpp" "/home/bmalecki/Projects/So2/Projekt/build-zad3_v2-Desktop-Default/CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o"
+  "/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/RandomGenerator.cpp" "/home/bmalecki/Projects/So2/Projekt/build-zad3_v2-Desktop-Default/CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.o"
+  "/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/State.cpp" "/home/bmalecki/Projects/So2/Projekt/build-zad3_v2-Desktop-Default/CMakeFiles/so2_zad3-lib.dir/source/State.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
