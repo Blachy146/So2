@@ -2,12 +2,15 @@
 #include <list>
 
 #include <Elevator.hpp>
-#include <Person.hpp>
-#include <Building.hpp>
 
 
 Elevator::Elevator(int capacity, std::shared_ptr<Building> building)
-    : capacity(capacity), building(building)
+  : capacity(capacity), building(building)
+{
+}
+
+Elevator::Elevator(int capacity, std::shared_ptr<Building>&& building)
+  : capacity(capacity), building(building)
 {
 }
 

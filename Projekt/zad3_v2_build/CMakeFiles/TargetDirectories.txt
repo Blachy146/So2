@@ -1,0 +1,4 @@
+/home/bmalecki/Projects/So2/Projekt/zad3_v2_build/CMakeFiles/edit_cache.dir
+/home/bmalecki/Projects/So2/Projekt/zad3_v2_build/CMakeFiles/rebuild_cache.dir
+/home/bmalecki/Projects/So2/Projekt/zad3_v2_build/CMakeFiles/so2_zad3-lib.dir
+/home/bmalecki/Projects/So2/Projekt/zad3_v2_build/CMakeFiles/so2_zad3.dir

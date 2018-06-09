@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Building.hpp
+
+/home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Building.cpp
+iostream
+-
+Building.hpp
+-
+

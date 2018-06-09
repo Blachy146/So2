@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++14 -lpthread -lncurses  -rdynamic CMakeFiles/so2_zad3.dir/source/main.cpp.o  -o so2_zad3 libso2_zad3-lib.a 

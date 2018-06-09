@@ -1,0 +1,2 @@
+/usr/bin/ar qc libso2_zad3-lib.a  CMakeFiles/so2_zad3-lib.dir/source/Building.cpp.o CMakeFiles/so2_zad3-lib.dir/source/Person.cpp.o CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o
+/usr/bin/ranlib libso2_zad3-lib.a
