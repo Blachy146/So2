@@ -13,7 +13,7 @@ public:
 
   const int numberOfFloors;
   bool peopleNotEnterElevator;
-  bool elevatorReadyOnFloor;
+  std::vector<bool> elevatorReadyOnFloor;
   std::vector<std::condition_variable> elevatorOnFloorCondVar;
   std::condition_variable elevatorReadyToRunCondVar;
   std::mutex elevatorMtx;

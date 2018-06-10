@@ -20,16 +20,16 @@ void Elevator::run()
 {
   std::cout << "Elevator is running...\n";
 
-  RandomGenerator floorRandomGenerator(0, 4);
+  RandomGenerator floorRandomGenerator(0, 2);
   RandomGenerator sleepTimeRandomGenerator(1000, 2000);
 
   for(auto i = 0; i < 2; ++i)
   {
     state->elevatorMtx.unlock();
-    state->elevatorReadyOnFloor = true;
+    state->elevatorReadyOnFloor[currentFloor] = true;
     state->elevatorOnFloorCondVar[currentFloor].notify_one();
 
-    std::cout << "Elevator's door open\n";
+    std::cout << "Elevator's door open on floor: " << currentFloor << "\n";
 
     std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeRandomGenerator()));
 
@@ -37,7 +37,7 @@ void Elevator::run()
 			std::unique_lock<std::mutex> readyToRunLock(state->elevatorMtx);
 
 			state->elevatorReadyToRunCondVar.wait(readyToRunLock, [&]() { return state->peopleNotEnterElevator; });
-			state->elevatorReadyOnFloor = false;
+			state->elevatorReadyOnFloor[currentFloor] = false;
 
 			std::cout << "Elevator's door close\n";
 
