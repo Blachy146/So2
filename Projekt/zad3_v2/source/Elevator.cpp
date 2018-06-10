@@ -22,8 +22,9 @@ void Elevator::run()
 
   RandomGenerator floorRandomGenerator(0, 1);
   RandomGenerator sleepTimeRandomGenerator(1000, 2000);
+  RandomGenerator openTimeRandomGenerator(800, 1200);
 
-  for(auto i = 0; i < 2; ++i)
+  for(auto i = 0; i < 4; ++i)
   {
     state->elevatorMtx.unlock();
     state->elevatorReadyOnFloor[currentFloor] = true;
@@ -31,7 +32,7 @@ void Elevator::run()
 
     std::cout << "Elevator's door open on floor: " << currentFloor << "\n";
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeRandomGenerator()));
+    std::this_thread::sleep_for(std::chrono::milliseconds(openTimeRandomGenerator()));
 
 		{
 			std::unique_lock<std::mutex> readyToRunLock(state->elevatorMtx);
@@ -42,6 +43,8 @@ void Elevator::run()
 			std::cout << "Elevator's door close\n";
 
 			currentFloor = floorRandomGenerator();
+
+			std::cout << "Elevator is going to floor: " << currentFloor << "\n";
 
 			std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeRandomGenerator()));
 		}
