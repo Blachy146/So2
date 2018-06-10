@@ -65,6 +65,10 @@ iostream
 -
 memory
 -
+future
+-
+functional
+-
 Building.hpp
 -
 Elevator.hpp
@@ -79,9 +83,17 @@ mutex
 -
 condition_variable
 -
+iostream
+-
+thread
+-
+chrono
+-
 Elevator.hpp
 -
 State.hpp
+-
+RandomGenerator.hpp
 -
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Person.cpp
@@ -95,11 +107,19 @@ mutex
 -
 condition_variable
 -
+thread
+-
+iostream
+-
+chrono
+-
 Queue.hpp
 -
 Person.hpp
 -
 State.hpp
+-
+RandomGenerator.hpp
 -
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/RandomGenerator.cpp

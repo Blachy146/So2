@@ -12,6 +12,7 @@ class Elevator
 public:
   Elevator(const int capacity, std::shared_ptr<State> state);
 
+  void run();
   void openDoor();
   void closeDoor();
 
@@ -19,5 +20,5 @@ public:
 private:
   const int capacity;
   std::shared_ptr<State> state;
-  const int currentFloor;
+  int currentFloor;
 };

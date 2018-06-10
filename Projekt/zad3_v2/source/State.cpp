@@ -5,17 +5,9 @@
 
 
 State::State(const int numberOfFloors)
-	: numberOfFloors(numberOfFloors)
+	: numberOfFloors(numberOfFloors), peopleNotEnterElevator(true), elevatorReadyOnFloor(false)
 {
-	elevatorOnFloor = std::vector<std::condition_variable>(numberOfFloors);
-}
-
-void State::startChangingState()
-{
-}
-
-void State::stopChangingState()
-{
+	elevatorOnFloorCondVar = std::vector<std::condition_variable>(numberOfFloors);
 }
 
 State::~State()

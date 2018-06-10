@@ -9,6 +9,7 @@ CMakeFiles/so2_zad3-lib.dir/source/Building.cpp.o: /home/bmalecki/Projects/So2/P
 CMakeFiles/so2_zad3-lib.dir/source/Building.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Building.cpp
 
 CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Elevator.hpp
+CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/RandomGenerator.hpp
 CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/State.hpp
 CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Elevator.cpp
 
@@ -17,6 +18,7 @@ CMakeFiles/so2_zad3-lib.dir/source/Person.cpp.o: /home/bmalecki/Projects/So2/Pro
 
 CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Person.hpp
 CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Queue.hpp
+CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/RandomGenerator.hpp
 CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/State.hpp
 CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o: /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/Queue.cpp
 

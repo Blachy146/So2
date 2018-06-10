@@ -9,15 +9,13 @@ class State
 {
 public:
   State(const int numberOfFloors);
-
-  void startChangingState();
-  void stopChangingState();
-
   ~State();
 
   const int numberOfFloors;
-  std::vector<std::condition_variable> elevatorOnFloor;
-  std::condition_variable elevatorDoorOpen;
+  bool peopleNotEnterElevator;
+  bool elevatorReadyOnFloor;
+  std::vector<std::condition_variable> elevatorOnFloorCondVar;
+  std::condition_variable elevatorReadyToRunCondVar;
   std::mutex elevatorMtx;
-  std::mutex changeStateMtx;
+
 };
