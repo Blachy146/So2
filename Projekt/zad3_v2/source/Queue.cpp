@@ -26,19 +26,24 @@ void Queue::run()
 
   RandomGenerator randomGenerator(1000, 2000);
 
+	for(auto i = 0; i < 10; ++i)
 	{
-		std::unique_lock<std::mutex> readyToEnterLock(state->elevatorMtx);
+		{
+			std::unique_lock<std::mutex> readyToEnterLock(state->elevatorMtx);
 
-		state->elevatorOnFloorCondVar[floorNumber].wait(readyToEnterLock, [&]() { return state->elevatorReadyOnFloor[floorNumber]; });
-		state->peopleNotEnterElevator = false;
+			state->elevatorOnFloorCondVar[floorNumber].wait(readyToEnterLock, [&]() { return state->elevatorReadyOnFloor[floorNumber]; });
+			state->peopleNotEnterElevator = false;
 
-		std::cout << "People entering to elevator from queue on floor: " << floorNumber << "\n";
+			std::cout << "People entering to elevator from queue on floor: " << floorNumber << "\n";
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
+			std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
+		}
+
+		state->peopleNotEnterElevator = true;
+		state->elevatorReadyToRunCondVar.notify_one();
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()/100));
 	}
-
-	state->peopleNotEnterElevator = true;
-	state->elevatorReadyToRunCondVar.notify_one();
 }
 
 void Queue::personTryToEnterElevator()

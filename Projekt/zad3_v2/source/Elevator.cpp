@@ -20,7 +20,7 @@ void Elevator::run()
 {
   std::cout << "Elevator is running...\n";
 
-  RandomGenerator floorRandomGenerator(0, 2);
+  RandomGenerator floorRandomGenerator(0, 1);
   RandomGenerator sleepTimeRandomGenerator(1000, 2000);
 
   for(auto i = 0; i < 2; ++i)
