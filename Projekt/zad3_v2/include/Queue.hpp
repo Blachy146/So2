@@ -4,6 +4,7 @@
 #include <memory>
 #include <mutex>
 #include <condition_variable>
+#include <vector>
 
 #include <Person.hpp>
 #include <State.hpp>
@@ -15,9 +16,11 @@ public:
   Queue(const int initialNumberOfPeople, const int floorNumber, std::shared_ptr<State> state);
 
   void run();
-  void personTryToEnterElevator();
+  void printQueue();
 
   ~Queue();
+
+  int yCoordOfFloor;
 private:
   const int floorNumber;
   std::shared_ptr<State> state;

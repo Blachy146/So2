@@ -1,5 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/so2_zad3-lib.dir/source/Building.cpp.o"
+  "CMakeFiles/so2_zad3-lib.dir/source/Person.cpp.o"
+  "CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o"
+  "CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o"
+  "CMakeFiles/so2_zad3-lib.dir/source/State.cpp.o"
+  "CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.o"
   "libso2_zad3-lib.pdb"
   "libso2_zad3-lib.a"
 )

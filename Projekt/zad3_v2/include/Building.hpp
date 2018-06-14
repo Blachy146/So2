@@ -16,6 +16,7 @@ public:
   Building(const int numberOfFloors, const int elevatorCapacity, const int numberOfPeoplePerFloor);
 
   void run();
+  std::vector<int> printBuilding();
 
   ~Building();
 private:

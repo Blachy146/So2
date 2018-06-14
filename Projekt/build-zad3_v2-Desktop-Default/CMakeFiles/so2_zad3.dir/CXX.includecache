@@ -43,6 +43,8 @@ mutex
 -
 condition_variable
 -
+vector
+-
 Person.hpp
 -
 State.hpp
@@ -58,6 +60,8 @@ vector
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/source/main.cpp
 iostream
+-
+ncurses.h
 -
 Building.hpp
 -

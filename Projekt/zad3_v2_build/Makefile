@@ -163,6 +163,141 @@ source/Building.cpp.s:
 	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Building.cpp.s
 .PHONY : source/Building.cpp.s
 
+source/Elevator.o: source/Elevator.cpp.o
+
+.PHONY : source/Elevator.o
+
+# target to build an object file
+source/Elevator.cpp.o:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.o
+.PHONY : source/Elevator.cpp.o
+
+source/Elevator.i: source/Elevator.cpp.i
+
+.PHONY : source/Elevator.i
+
+# target to preprocess a source file
+source/Elevator.cpp.i:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.i
+.PHONY : source/Elevator.cpp.i
+
+source/Elevator.s: source/Elevator.cpp.s
+
+.PHONY : source/Elevator.s
+
+# target to generate assembly for a file
+source/Elevator.cpp.s:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Elevator.cpp.s
+.PHONY : source/Elevator.cpp.s
+
+source/Person.o: source/Person.cpp.o
+
+.PHONY : source/Person.o
+
+# target to build an object file
+source/Person.cpp.o:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Person.cpp.o
+.PHONY : source/Person.cpp.o
+
+source/Person.i: source/Person.cpp.i
+
+.PHONY : source/Person.i
+
+# target to preprocess a source file
+source/Person.cpp.i:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Person.cpp.i
+.PHONY : source/Person.cpp.i
+
+source/Person.s: source/Person.cpp.s
+
+.PHONY : source/Person.s
+
+# target to generate assembly for a file
+source/Person.cpp.s:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Person.cpp.s
+.PHONY : source/Person.cpp.s
+
+source/Queue.o: source/Queue.cpp.o
+
+.PHONY : source/Queue.o
+
+# target to build an object file
+source/Queue.cpp.o:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.o
+.PHONY : source/Queue.cpp.o
+
+source/Queue.i: source/Queue.cpp.i
+
+.PHONY : source/Queue.i
+
+# target to preprocess a source file
+source/Queue.cpp.i:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.i
+.PHONY : source/Queue.cpp.i
+
+source/Queue.s: source/Queue.cpp.s
+
+.PHONY : source/Queue.s
+
+# target to generate assembly for a file
+source/Queue.cpp.s:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/Queue.cpp.s
+.PHONY : source/Queue.cpp.s
+
+source/RandomGenerator.o: source/RandomGenerator.cpp.o
+
+.PHONY : source/RandomGenerator.o
+
+# target to build an object file
+source/RandomGenerator.cpp.o:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.o
+.PHONY : source/RandomGenerator.cpp.o
+
+source/RandomGenerator.i: source/RandomGenerator.cpp.i
+
+.PHONY : source/RandomGenerator.i
+
+# target to preprocess a source file
+source/RandomGenerator.cpp.i:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.i
+.PHONY : source/RandomGenerator.cpp.i
+
+source/RandomGenerator.s: source/RandomGenerator.cpp.s
+
+.PHONY : source/RandomGenerator.s
+
+# target to generate assembly for a file
+source/RandomGenerator.cpp.s:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/RandomGenerator.cpp.s
+.PHONY : source/RandomGenerator.cpp.s
+
+source/State.o: source/State.cpp.o
+
+.PHONY : source/State.o
+
+# target to build an object file
+source/State.cpp.o:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/State.cpp.o
+.PHONY : source/State.cpp.o
+
+source/State.i: source/State.cpp.i
+
+.PHONY : source/State.i
+
+# target to preprocess a source file
+source/State.cpp.i:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/State.cpp.i
+.PHONY : source/State.cpp.i
+
+source/State.s: source/State.cpp.s
+
+.PHONY : source/State.s
+
+# target to generate assembly for a file
+source/State.cpp.s:
+	$(MAKE) -f CMakeFiles/so2_zad3-lib.dir/build.make CMakeFiles/so2_zad3-lib.dir/source/State.cpp.s
+.PHONY : source/State.cpp.s
+
 source/main.o: source/main.cpp.o
 
 .PHONY : source/main.o
@@ -203,6 +338,21 @@ help:
 	@echo "... source/Building.o"
 	@echo "... source/Building.i"
 	@echo "... source/Building.s"
+	@echo "... source/Elevator.o"
+	@echo "... source/Elevator.i"
+	@echo "... source/Elevator.s"
+	@echo "... source/Person.o"
+	@echo "... source/Person.i"
+	@echo "... source/Person.s"
+	@echo "... source/Queue.o"
+	@echo "... source/Queue.i"
+	@echo "... source/Queue.s"
+	@echo "... source/RandomGenerator.o"
+	@echo "... source/RandomGenerator.i"
+	@echo "... source/RandomGenerator.s"
+	@echo "... source/State.o"
+	@echo "... source/State.i"
+	@echo "... source/State.s"
 	@echo "... source/main.o"
 	@echo "... source/main.i"
 	@echo "... source/main.s"

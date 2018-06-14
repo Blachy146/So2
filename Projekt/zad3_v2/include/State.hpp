@@ -12,10 +12,11 @@ public:
   ~State();
 
   const int numberOfFloors;
-  bool peopleNotEnterElevator;
+  bool peopleEnterElevator;
+  bool peopleLeavingElevator;
   std::vector<bool> elevatorReadyOnFloor;
   std::vector<std::condition_variable> elevatorOnFloorCondVar;
   std::condition_variable elevatorReadyToRunCondVar;
   std::mutex elevatorMtx;
-
+  std::mutex printMtx;
 };

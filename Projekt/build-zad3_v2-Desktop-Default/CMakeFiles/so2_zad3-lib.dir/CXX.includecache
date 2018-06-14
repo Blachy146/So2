@@ -43,6 +43,8 @@ mutex
 -
 condition_variable
 -
+vector
+-
 Person.hpp
 -
 State.hpp
@@ -69,6 +71,10 @@ future
 -
 functional
 -
+ncurses.h
+-
+algorithm
+-
 Building.hpp
 -
 Elevator.hpp
@@ -88,6 +94,8 @@ iostream
 thread
 -
 chrono
+-
+ncurses.h
 -
 Elevator.hpp
 -
@@ -112,6 +120,8 @@ thread
 iostream
 -
 chrono
+-
+ncurses.h
 -
 Queue.hpp
 -

@@ -15,8 +15,12 @@ public:
   void run();
   void openDoor();
   void closeDoor();
+  void removeElevator();
+  void printElevator();
 
   ~Elevator();
+
+  std::vector<int> yCoordsOfFloors;
 private:
   const int capacity;
   std::shared_ptr<State> state;

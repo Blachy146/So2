@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <ncurses.h>
 
 #include <Elevator.hpp>
 #include <State.hpp>
@@ -18,9 +19,9 @@ Elevator::Elevator(const int capacity, std::shared_ptr<State> state)
 
 void Elevator::run()
 {
-  std::cout << "Elevator is running...\n";
+//  std::cout << "Elevator is running...\n";
 
-  RandomGenerator floorRandomGenerator(0, 1);
+  RandomGenerator floorRandomGenerator(0, 3);
   RandomGenerator sleepTimeRandomGenerator(1000, 2000);
   RandomGenerator openTimeRandomGenerator(800, 1200);
 
@@ -30,21 +31,25 @@ void Elevator::run()
     state->elevatorReadyOnFloor[currentFloor] = true;
     state->elevatorOnFloorCondVar[currentFloor].notify_one();
 
-    std::cout << "Elevator's door open on floor: " << currentFloor << "\n";
+    printElevator();
+
+//    std::cout << "Elevator's door open on floor: " << currentFloor << "\n";
 
     std::this_thread::sleep_for(std::chrono::milliseconds(openTimeRandomGenerator()));
 
 		{
 			std::unique_lock<std::mutex> readyToRunLock(state->elevatorMtx);
 
-			state->elevatorReadyToRunCondVar.wait(readyToRunLock, [&]() { return state->peopleNotEnterElevator; });
+			state->elevatorReadyToRunCondVar.wait(readyToRunLock, [&]() { return !state->peopleEnterElevator; });
 			state->elevatorReadyOnFloor[currentFloor] = false;
 
-			std::cout << "Elevator's door close\n";
+//			std::cout << "Elevator's door close\n";
+
+			removeElevator();
 
 			currentFloor = floorRandomGenerator();
 
-			std::cout << "Elevator is going to floor: " << currentFloor << "\n";
+//			std::cout << "Elevator is going to floor: " << currentFloor << "\n";
 
 			std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeRandomGenerator()));
 		}
@@ -57,6 +62,54 @@ void Elevator::openDoor()
 
 void Elevator::closeDoor()
 {
+}
+
+void Elevator::removeElevator()
+{
+	const int yCoord = yCoordsOfFloors[currentFloor] + 1;
+	int row, col;
+	getmaxyx(stdscr, row, col);
+
+	state->printMtx.lock();
+
+	for(auto i = 1; i < 18; ++i)
+	{
+		mvprintw(yCoord, i, " ");
+		mvprintw(yCoord + 3, i, " ");
+	}
+
+	for(auto i = yCoord + 1; i < yCoord + 3; ++i)
+	{
+		mvprintw(i, 1, " ");
+		mvprintw(i, 18, " ");
+	}
+
+	refresh();
+	state->printMtx.unlock();
+}
+
+void Elevator::printElevator()
+{
+	const int yCoord = yCoordsOfFloors[currentFloor] + 1;
+	int row, col;
+	getmaxyx(stdscr, row, col);
+
+	state->printMtx.lock();
+
+	for(auto i = 1; i < 18; ++i)
+	{
+		mvprintw(yCoord, i, "-");
+		mvprintw(yCoord + 3, i, "-");
+	}
+
+	for(auto i = yCoord + 1; i < yCoord + 3; ++i)
+	{
+		mvprintw(i, 1, "|");
+		mvprintw(i, 18, "|");
+	}
+
+	refresh();
+	state->printMtx.unlock();
 }
 
 Elevator::~Elevator()
