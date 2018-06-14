@@ -12,7 +12,7 @@
 
 
 Elevator::Elevator(const int capacity, std::shared_ptr<State> state)
-  : capacity(capacity), state(state), currentFloor(0)
+  : capacity(capacity), state(state)
 {
   state->elevatorMtx.lock();
 }
@@ -26,8 +26,23 @@ void Elevator::run()
   while(true)
   {
     state->elevatorMtx.unlock();
-    state->elevatorReadyOnFloor[currentFloor] = true;
-    state->elevatorOnFloorCondVar[currentFloor].notify_one();
+    state->elevatorReadyOnFloor[state->elevatorCurrentFloor] = true;
+    state->elevatorOnFloorCondVar[state->elevatorCurrentFloor].notify_one();
+
+    RandomGenerator peopleRandomGen(0, state->numberOfPeopleInElevator);
+
+    for(auto i = 0; i < peopleRandomGen(); ++i)
+    {
+      --state->numberOfPeopleInElevator;
+      printElevator();
+
+      state->addingPerson[state->elevatorCurrentFloor] = true;
+      state->addingPersonCondVars[state->elevatorCurrentFloor].notify_one();
+
+      std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    }
+
+    state->addingPerson[state->elevatorCurrentFloor] = false;
 
     printElevator();
 
@@ -37,28 +52,45 @@ void Elevator::run()
 			std::unique_lock<std::mutex> readyToRunLock(state->elevatorMtx);
 
 			state->elevatorReadyToRunCondVar.wait(readyToRunLock, [&]() { return !state->peopleEnterElevator; });
-			state->elevatorReadyOnFloor[currentFloor] = false;
+			state->elevatorReadyOnFloor[state->elevatorCurrentFloor] = false;
 
 			removeElevator();
 
-			currentFloor = floorRandomGenerator();
+			state->elevatorCurrentFloor = floorRandomGenerator();
 
 			std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeRandomGenerator()));
 		}
 	}
 }
 
-void Elevator::openDoor()
+void Elevator::printNumberOfPeople()
 {
 }
 
-void Elevator::closeDoor()
+void Elevator::addPeople()
 {
+	while(true)
+	{
+		{
+			std::unique_lock<std::mutex> addPeopleLock(state->addingPersonToElevatorMtx);
+
+			state->addingpersonToEleveatorCondVar.wait(addPeopleLock, [&]() { return state->addingToElevator; });
+			state->addingToElevator = false;
+			state->elevatorPeopleMutex.lock();
+
+			++state->numberOfPeopleInElevator;
+			printElevator();
+
+			state->elevatorPeopleMutex.unlock();
+		}
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	}
 }
 
 void Elevator::removeElevator()
 {
-	const int yCoord = yCoordsOfFloors[currentFloor] + 1;
+	const int yCoord = yCoordsOfFloors[state->elevatorCurrentFloor] + 1;
 	int row, col;
 	getmaxyx(stdscr, row, col);
 
@@ -76,13 +108,15 @@ void Elevator::removeElevator()
 		mvprintw(i, 18, " ");
 	}
 
+	mvprintw(yCoord + 2, 9, " ");
+
 	refresh();
 	state->printMtx.unlock();
 }
 
 void Elevator::printElevator()
 {
-	const int yCoord = yCoordsOfFloors[currentFloor] + 1;
+	const int yCoord = yCoordsOfFloors[state->elevatorCurrentFloor] + 1;
 	int row, col;
 	getmaxyx(stdscr, row, col);
 
@@ -99,6 +133,8 @@ void Elevator::printElevator()
 		mvprintw(i, 1, "|");
 		mvprintw(i, 18, "|");
 	}
+
+	mvprintw(yCoord + 2, 9, "%d", state->numberOfPeopleInElevator);
 
 	refresh();
 	state->printMtx.unlock();

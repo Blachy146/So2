@@ -46,7 +46,9 @@ void Queue::run()
 				if(state->numberOfPeopleOnFloors[floorNumber] > 0)
 				{
 					--state->numberOfPeopleOnFloors[floorNumber];
-//					people.pop();
+
+					state->addingToElevator = true;
+					state->addingpersonToEleveatorCondVar.notify_one();
 				}
 
 				printQueue();
@@ -54,6 +56,7 @@ void Queue::run()
 				state->peopleMutex.unlock();
 
 				std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
+				state->addingToElevator = false;
 			}
 		}
 
@@ -100,13 +103,12 @@ void Queue::addNewPeople()
 			state->peopleMutex.lock();
 
 			++state->numberOfPeopleOnFloors[floorNumber];
-			people.push(std::make_shared<Person>(state));
 
 			printQueue();
 
 			state->peopleMutex.unlock();
 
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			std::this_thread::sleep_for(std::chrono::milliseconds(50));
 		}
 	}
 }

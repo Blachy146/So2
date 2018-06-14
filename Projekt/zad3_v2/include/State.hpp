@@ -23,5 +23,11 @@ public:
   std::mutex printMtx;
   std::mutex addingPersonMtx;
   std::mutex peopleMutex;
-  std::vector<int> numberOfPeopleOnFloors
-;};
+  std::vector<int> numberOfPeopleOnFloors;
+  int numberOfPeopleInElevator;
+  bool addingToElevator;
+  std::condition_variable addingpersonToEleveatorCondVar;
+  std::mutex addingPersonToElevatorMtx;
+  std::mutex elevatorPeopleMutex;
+  int elevatorCurrentFloor;
+};

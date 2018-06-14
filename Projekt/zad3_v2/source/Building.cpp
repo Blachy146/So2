@@ -40,6 +40,7 @@ void Building::run()
   std::vector<std::future<void>> peopleFutures;
   std::vector<std::future<void>> addPeopleToQueuesFutures;
   auto elevatorFuture = std::async(std::launch::async, std::bind(&Elevator::run, *elevator));
+  auto elevatorAddPeopleFuture = std::async(std::launch::async, std::bind(&Elevator::addPeople, *elevator));
 
   for(auto i = 0; i < queues.size(); ++i)
   {
@@ -58,6 +59,7 @@ void Building::run()
   }
 
   elevatorFuture.get();
+  elevatorAddPeopleFuture.get();
 
   for(auto i = 0; i < queuesFutures.size(); ++i)
   {

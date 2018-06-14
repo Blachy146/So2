@@ -12,6 +12,9 @@ State::State(const int numberOfFloors)
 	addingPerson = std::vector<bool>(numberOfFloors, false);
 	addingPersonCondVars = std::vector<std::condition_variable>(numberOfFloors);
 	numberOfPeopleOnFloors = std::vector<int>(numberOfFloors, 0);
+	numberOfPeopleInElevator = 0;
+	addingToElevator = false;
+	elevatorCurrentFloor = 0;
 }
 
 State::~State()
