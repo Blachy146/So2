@@ -19,10 +19,15 @@ Person::Person(const int numberOfFloors, std::shared_ptr<State> state)
 
 void Person::joinRandomQueue()
 {
-  RandomGenerator randomGenerator(1000, 50000);
+  RandomGenerator randomGenerator(100, 50000);
   RandomGenerator queueGenerator(0, numberOfFloors - 1);
 
+  auto randomFloor = queueGenerator();
+
   std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
+
+  state->addingPerson[randomFloor] = true;
+  state->addingPersonCondVars[randomFloor].notify_one();
 }
 
 Person::~Person()

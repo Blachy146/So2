@@ -32,8 +32,6 @@ Building::Building(const int numberOfFloors, const int elevatorCapacity, const i
 
 void Building::run()
 {
-//  std::cout << "Building running...\n";
-
   auto yCoordsOfFloors = printBuilding();
 
   elevator->yCoordsOfFloors = yCoordsOfFloors;

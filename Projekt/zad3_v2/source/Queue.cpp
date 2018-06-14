@@ -19,15 +19,14 @@ Queue::Queue(const int initialNumberOfPeople, const int floorNumber, std::shared
   {
     people.push(std::make_shared<Person>(state));
   }
+
+  state->numberOfPeopleOnFloors[floorNumber] = initialNumberOfPeople;
 }
 
 void Queue::run()
 {
-//  std::cout << "Queue running...\n";
-
   RandomGenerator randomGenerator(1000, 2000);
-  RandomGenerator addMoreToQueueGenerator(0, 1);
-  RandomGenerator peaopleRandomGenerator(0, people.size());
+  RandomGenerator peopleRandomGenerator(0, state->numberOfPeopleOnFloors[floorNumber]);
 
 	while(true)
 	{
@@ -36,17 +35,23 @@ void Queue::run()
 
 			std::unique_lock<std::mutex> readyToEnterLock(state->elevatorMtx);
 
-			state->elevatorOnFloorCondVar[floorNumber].wait(readyToEnterLock, [&]() { return state->elevatorReadyOnFloor[floorNumber]; });
+			state->elevatorOnFloorCondVar[floorNumber].wait(readyToEnterLock, [&]() { return state->elevatorReadyOnFloor[floorNumber] && !state->addingPerson[floorNumber]; });
 			state->peopleEnterElevator = true;
 
-			for(auto j = 0; j < peaopleRandomGenerator(); ++j)
+
+			for(auto j = 0; j < peopleRandomGenerator(); ++j)
 			{
-				if(people.size() > 0)
+				state->peopleMutex.lock();
+
+				if(state->numberOfPeopleOnFloors[floorNumber] > 0)
 				{
-					people.pop();
+					--state->numberOfPeopleOnFloors[floorNumber];
+//					people.pop();
 				}
 
 				printQueue();
+
+				state->peopleMutex.unlock();
 
 				std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
 			}
@@ -61,20 +66,19 @@ void Queue::run()
 
 void Queue::printQueue()
 {
+	state->printMtx.lock();
+
 	const int yCoord = yCoordOfFloor + 2;
 	int row, col;
 	getmaxyx(stdscr, row, col);
-
-	state->printMtx.lock();
 
 	move(yCoord, 22);
 	clrtoeol();
 	move(yCoord + 1, 22);
 	clrtoeol();
 
-	for(auto i = 0; i < people.size(); ++i)
+	for(auto i = 0; i < state->numberOfPeopleOnFloors[floorNumber]; ++i)
 	{
-
 		mvprintw(yCoord, i + 22, "O ");
 		mvprintw(yCoord + 1, i + 22, "|");
 	}
@@ -85,6 +89,26 @@ void Queue::printQueue()
 
 void Queue::addNewPeople()
 {
+	while(true)
+	{
+		{
+			std::unique_lock<std::mutex> addingPersonLock(state->addingPersonMtx);
+
+			state->addingPersonCondVars[floorNumber].wait(addingPersonLock, [&]() { return state->addingPerson[floorNumber]; });
+			state->addingPerson[floorNumber] = false;
+
+			state->peopleMutex.lock();
+
+			++state->numberOfPeopleOnFloors[floorNumber];
+			people.push(std::make_shared<Person>(state));
+
+			printQueue();
+
+			state->peopleMutex.unlock();
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		}
+	}
 }
 
 Queue::~Queue()

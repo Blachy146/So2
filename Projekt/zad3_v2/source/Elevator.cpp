@@ -19,8 +19,6 @@ Elevator::Elevator(const int capacity, std::shared_ptr<State> state)
 
 void Elevator::run()
 {
-//  std::cout << "Elevator is running...\n";
-
   RandomGenerator floorRandomGenerator(0, 3);
   RandomGenerator sleepTimeRandomGenerator(1000, 2000);
   RandomGenerator openTimeRandomGenerator(800, 1200);
@@ -33,8 +31,6 @@ void Elevator::run()
 
     printElevator();
 
-//    std::cout << "Elevator's door open on floor: " << currentFloor << "\n";
-
     std::this_thread::sleep_for(std::chrono::milliseconds(openTimeRandomGenerator()));
 
 		{
@@ -43,13 +39,9 @@ void Elevator::run()
 			state->elevatorReadyToRunCondVar.wait(readyToRunLock, [&]() { return !state->peopleEnterElevator; });
 			state->elevatorReadyOnFloor[currentFloor] = false;
 
-//			std::cout << "Elevator's door close\n";
-
 			removeElevator();
 
 			currentFloor = floorRandomGenerator();
-
-//			std::cout << "Elevator is going to floor: " << currentFloor << "\n";
 
 			std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeRandomGenerator()));
 		}
