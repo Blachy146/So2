@@ -23,11 +23,6 @@ void Person::joinRandomQueue()
   RandomGenerator queueGenerator(0, numberOfFloors - 1);
 
   std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
-
-  state->addPersonToQueueMtx.lock();
-  state->addPerson = true;
-  state->addPersonToQueueMtx.unlock();
-  state->personJoinQueueCondVar[queueGenerator()].notify_one();
 }
 
 Person::~Person()
