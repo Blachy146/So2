@@ -1,21 +1,33 @@
+#include <thread>
+#include <chrono>
+#include <iostream>
 
 #include <Person.hpp>
+#include <RandomGenerator.hpp>
+#include <Queue.hpp>
 
 
-Person::Person()
+Person::Person(std::shared_ptr<State> state)
+  : numberOfFloors(0), state(state)
 {
 }
 
-void Person::callElevator()
+Person::Person(const int numberOfFloors, std::shared_ptr<State> state)
+  : numberOfFloors(numberOfFloors), state(state)
 {
 }
 
-void Person::enterElevator()
+void Person::joinRandomQueue()
 {
-}
+  RandomGenerator randomGenerator(1000, 50000);
+  RandomGenerator queueGenerator(0, numberOfFloors - 1);
 
-void Person::leaveElevator()
-{
+  std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
+
+  state->addPersonToQueueMtx.lock();
+  state->addPerson = true;
+  state->addPersonToQueueMtx.unlock();
+  state->personJoinQueueCondVar[queueGenerator()].notify_one();
 }
 
 Person::~Person()

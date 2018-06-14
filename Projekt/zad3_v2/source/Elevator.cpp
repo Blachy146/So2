@@ -25,7 +25,7 @@ void Elevator::run()
   RandomGenerator sleepTimeRandomGenerator(1000, 2000);
   RandomGenerator openTimeRandomGenerator(800, 1200);
 
-  for(auto i = 0; i < 4; ++i)
+  while(true)
   {
     state->elevatorMtx.unlock();
     state->elevatorReadyOnFloor[currentFloor] = true;

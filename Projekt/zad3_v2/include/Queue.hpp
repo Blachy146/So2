@@ -17,6 +17,7 @@ public:
 
   void run();
   void printQueue();
+  void addNewPeople();
 
   ~Queue();
 

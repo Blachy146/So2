@@ -17,7 +17,7 @@ Queue::Queue(const int initialNumberOfPeople, const int floorNumber, std::shared
 {
   for(auto i = 0; i < initialNumberOfPeople; ++i)
   {
-    people.push(std::make_shared<Person>());
+    people.push(std::make_shared<Person>(state));
   }
 }
 
@@ -26,13 +26,12 @@ void Queue::run()
 //  std::cout << "Queue running...\n";
 
   RandomGenerator randomGenerator(1000, 2000);
+  RandomGenerator addMoreToQueueGenerator(0, 1);
   RandomGenerator peaopleRandomGenerator(0, people.size());
 
 	while(true)
 	{
 		{
-//			std::cout << "People are waiting for elevator on floor: " << floorNumber << "\n";
-
 			printQueue();
 
 			std::unique_lock<std::mutex> readyToEnterLock(state->elevatorMtx);
@@ -40,15 +39,24 @@ void Queue::run()
 			state->elevatorOnFloorCondVar[floorNumber].wait(readyToEnterLock, [&]() { return state->elevatorReadyOnFloor[floorNumber]; });
 			state->peopleEnterElevator = true;
 
-			for(auto j = 0; j < peaopleRandomGenerator(); ++i)
+			for(auto j = 0; j < peaopleRandomGenerator(); ++j)
 			{
-//				std::cout << "People are entering elevator from queue on floor: " << floorNumber << "\n";
-				if(people.size() > 0)
 				{
-					people.pop();
+					std::unique_lock<std::mutex> canChangePeopleLock(state->changePeopleMtxs[floorNumber]);
+
+					state->changePeopleCondVars[floorNumber].wait(canChangePeopleLock, [&]() { return state->canChangePeople; });
+					state->canChangePeople = false;
+
+					if(people.size() > 0)
+					{
+						people.pop();
+					}
+
+					printQueue();
 				}
 
-				printQueue();
+				state->canChangePeople = true;
+				state->changePeopleCondVars[floorNumber].notify_one();
 
 				std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator()));
 			}
@@ -83,7 +91,33 @@ void Queue::printQueue()
 
 	refresh();
 	state->printMtx.unlock();
+}
 
+void Queue::addNewPeople()
+{
+	while(true)
+	{
+		{
+			std::unique_lock<std::mutex> addPersonLock(state->addPersonToQueueMtx);
+
+			state->personJoinQueueCondVar[floorNumber].wait(addPersonLock, [&]() { return state->addPerson; });
+			state->addPerson = false;
+
+			{
+				std::unique_lock<std::mutex> canChangePeopleLock(state->changePeopleMtxs[floorNumber]);
+
+				state->changePeopleCondVars[floorNumber].wait(canChangePeopleLock, [&]() { return state->canChangePeople; });
+				state->canChangePeople = false;
+
+				people.push(std::make_shared<Person>(state));
+
+				printQueue();
+			}
+
+			state->canChangePeople = true;
+			state->changePeopleCondVars[floorNumber].notify_one();
+		}
+	}
 }
 
 Queue::~Queue()

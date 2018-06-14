@@ -1,15 +1,18 @@
 #pragma once
 
+#include <State.hpp>
+#include <memory>
 
 class Person
 {
 public:
-  Person();
+  explicit Person(std::shared_ptr<State> state);
+  Person(const int numberOfFloors, std::shared_ptr<State> state);
 
-  void callElevator();
-  void enterElevator();
-  void leaveElevator();
+  void joinRandomQueue();
 
   ~Person();
 private:
+  const int numberOfFloors;
+  std::shared_ptr<State> state;
 };

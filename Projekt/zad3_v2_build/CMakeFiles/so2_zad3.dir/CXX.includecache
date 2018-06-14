@@ -33,6 +33,10 @@ State.hpp
 -
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Person.hpp
+State.hpp
+-
+memory
+-
 
 /home/bmalecki/Projects/So2/Projekt/zad3_v2/include/Queue.hpp
 queue

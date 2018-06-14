@@ -8,6 +8,7 @@
 #include <Building.hpp>
 #include <Elevator.hpp>
 #include <State.hpp>
+#include <Person.hpp>
 
 
 Building::Building(const int numberOfFloors, const int elevatorCapacity, const int numberOfPeoplePerFloor)
@@ -22,6 +23,11 @@ Building::Building(const int numberOfFloors, const int elevatorCapacity, const i
 	{
 		queues.push_back(std::make_shared<Queue>(numberOfPeoplePerFloor, i, state));
 	}
+
+	for(auto i = 0; i < 10; ++i)
+	{
+		additionalPeople.push_back(std::make_shared<Person>(numberOfFloors, state));
+	}
 }
 
 void Building::run()
@@ -33,6 +39,8 @@ void Building::run()
   elevator->yCoordsOfFloors = yCoordsOfFloors;
 
   std::vector<std::future<void>> queuesFutures;
+  std::vector<std::future<void>> peopleFutures;
+  std::vector<std::future<void>> addPeopleToQueuesFutures;
   auto elevatorFuture = std::async(std::launch::async, std::bind(&Elevator::run, *elevator));
 
   for(auto i = 0; i < queues.size(); ++i)
@@ -41,11 +49,31 @@ void Building::run()
     queuesFutures.push_back(std::async(std::launch::async, std::bind(&Queue::run, *queues[i])));
   }
 
+  for(auto i = 0; i < queues.size(); ++i)
+  {
+    addPeopleToQueuesFutures.push_back(std::async(std::launch::async, std::bind(&Queue::addNewPeople, *queues[i])));
+  }
+
+  for(auto i = 0; i < additionalPeople.size(); ++i)
+  {
+    peopleFutures.push_back(std::async(std::launch::async, std::bind(&Person::joinRandomQueue, *additionalPeople[i])));
+  }
+
   elevatorFuture.get();
 
   for(auto i = 0; i < queuesFutures.size(); ++i)
   {
     queuesFutures[i].get();
+  }
+
+  for(auto i = 0; i < peopleFutures.size(); ++i)
+  {
+    peopleFutures[i].get();
+  }
+
+  for(auto i = 0; i < addPeopleToQueuesFutures.size(); ++i)
+  {
+    addPeopleToQueuesFutures[i].get();
   }
 }
 

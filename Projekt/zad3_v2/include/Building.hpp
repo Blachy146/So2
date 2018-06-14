@@ -26,4 +26,5 @@ private:
   std::shared_ptr<State> state;
   std::shared_ptr<Elevator> elevator;
   std::vector<std::shared_ptr<Queue>> queues;
+  std::vector<std::shared_ptr<Person>> additionalPeople;
 };
